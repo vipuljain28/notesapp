@@ -15,7 +15,9 @@
     "test:run": "vitest --run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "performance:check": "node scripts/check-performance-budget.mjs"
+    "performance:check": "node scripts/check-performance-budget.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.5.0",

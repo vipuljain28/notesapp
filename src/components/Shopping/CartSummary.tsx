@@ -3,6 +3,7 @@ import { Button, Card, TextInput } from '@components/Common'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { cartSlice } from '@store/cartSlice'
 import { selectCartItems, selectCartTotal } from '@store/selectors'
+import { CartItem } from '@components/Shopping/CartItem'
 
 export function CartSummary(): React.JSX.Element {
   const dispatch = useAppDispatch()
@@ -37,10 +38,7 @@ export function CartSummary(): React.JSX.Element {
       ) : (
         <ul className="mt-5 divide-y divide-slate-100">
           {items.map((item) => (
-            <li key={item.id} className="flex items-center justify-between gap-3 py-3">
-              <div><p className="font-medium text-slate-900">{item.name}</p><p className="text-sm text-slate-600">{item.quantity} × ${item.price.toFixed(2)}</p></div>
-              <Button type="button" variant="secondary" className="px-3 py-1.5 text-sm" onClick={() => dispatch(cartSlice.actions.removeItem(item.id))}>Remove</Button>
-            </li>
+            <CartItem key={item.id} item={item} onRemove={(id) => dispatch(cartSlice.actions.removeItem(id))} />
           ))}
         </ul>
       )}
