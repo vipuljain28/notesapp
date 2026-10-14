@@ -1,5 +1,7 @@
 # Documentation findings
 
+> Historical snapshot: these findings concern the legacy Angular source paths and do not describe the current React implementation. See [current documentation](../README.md).
+
 This page records observed incomplete or surprising behavior for maintainers. It does not prescribe fixes or claim a security audit.
 
 | Severity | Finding | Evidence |

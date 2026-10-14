@@ -1,5 +1,7 @@
 # Unknowns and verification limits
 
+> Historical snapshot: these questions were checked against the legacy Angular repository. Current build and implementation details are documented in [docs/README.md](../README.md); production hosting remains unconfigured.
+
 The checked-in repository does not answer the following questions. No runtime or external system was accessed to fill these gaps.
 
 | Unknown | Evidence checked |

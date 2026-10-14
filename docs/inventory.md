@@ -1,5 +1,7 @@
 # System inventory
 
+> Historical snapshot: counts and implementation claims below describe the Angular revision named in this file, not the current React application. Use the [current documentation index](README.md) for current behavior.
+
 This page enumerates the application's external interfaces, configuration, and integrations. All counts are from committed revision `6726604274f0edbef5ef715ee6759a65ed7f959b`.
 
 ## APIs and endpoints

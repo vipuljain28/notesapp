@@ -32,10 +32,11 @@ export const cartSlice = createSlice({
       if (existing) {
         if (existing.quantity + action.payload.quantity > 999) return
         existing.quantity += action.payload.quantity
+        state.total += existing.price * action.payload.quantity
       } else {
         state.items.push(action.payload)
+        state.total += action.payload.price * action.payload.quantity
       }
-      state.total += action.payload.price * action.payload.quantity
     },
     removeItem: (state, action: PayloadAction<number>) => {
       const item = state.items.find((i) => i.id === action.payload)

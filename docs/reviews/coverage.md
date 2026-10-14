@@ -1,5 +1,7 @@
 # Documentation coverage ledger
 
+> Historical snapshot: this ledger records counts from the legacy Angular commit named below. It is not a coverage report for the current React application.
+
 Counts below were collected from committed revision `6726604274f0edbef5ef715ee6759a65ed7f959b` on 2026-10-14. These values describe that revision and will drift as the repository changes.
 
 ## Inventory

@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Button, TextInput } from '@components/Common'
 import type { Contact } from '@store/contactSlice'
 import { useAppDispatch } from '@store/hooks'
@@ -19,14 +19,6 @@ export function ContactForm({ initialContact, onSaved }: ContactFormProps): Reac
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
-  useEffect(() => {
-    setName(initialContact?.name ?? '')
-    setEmail(initialContact?.email ?? '')
-    setPhone(initialContact?.phone ?? '')
-    setErrors({})
-    setSubmitError(null)
-  }, [initialContact])
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
     const contact: Omit<Contact, 'id'> = { name, email, phone }
@@ -37,21 +29,23 @@ export function ContactForm({ initialContact, onSaved }: ContactFormProps): Reac
 
     setSubmitting(true)
     try {
-      const result = initialContact
-        ? await dispatch(updateContact({ ...contact, id: initialContact.id }))
-        : await dispatch(createContact(contact))
-      if (
-        (initialContact && updateContact.fulfilled.match(result)) ||
-        (!initialContact && createContact.fulfilled.match(result))
-      ) {
-        if (!initialContact) {
+      if (initialContact) {
+        const result = await dispatch(updateContact({ ...contact, id: initialContact.id }))
+        if (updateContact.fulfilled.match(result)) {
+          onSaved?.()
+        } else {
+          setSubmitError(result.payload ?? 'Unable to update contact.')
+        }
+      } else {
+        const result = await dispatch(createContact(contact))
+        if (createContact.fulfilled.match(result)) {
           setName('')
           setEmail('')
           setPhone('')
+          onSaved?.()
+        } else {
+          setSubmitError(result.payload ?? 'Unable to create contact.')
         }
-        onSaved?.()
-      } else {
-        setSubmitError(result.payload ?? 'Unable to create contact.')
       }
     } finally {
       setSubmitting(false)

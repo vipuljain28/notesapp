@@ -1,5 +1,7 @@
 # Documentation review
 
+> Historical snapshot: this review describes the legacy Angular commit named below. Current application documentation is indexed in [docs/README.md](../README.md).
+
 The documentation covers the app's major implementation areas and distinguishes client behavior from unverified external or deployment behavior. The highest-impact maintainer findings are the unconditional route guard, contact request failures without UI handling, incomplete contact editing, and incorrect cart removal argument.
 
 The review uses the committed source at `6726604274f0edbef5ef715ee6759a65ed7f959b` as the authority. Inventory counts and document status are in the [coverage ledger](coverage.md). Severity-ranked behavior findings are in [findings](findings.md); unresolved questions and unverified claims are in [unknowns](unknowns.md).

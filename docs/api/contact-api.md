@@ -15,13 +15,13 @@ The browser client sends contact requests to the base URL configured by `VITE_AP
 
 | Method | Path | Purpose | Request | Response | Errors |
 |---|---|---|---|---|---|
-| `GET` | `/users` | Fetch the contact list. | None | Contact list | Network, timeout, server, or HTTP error |
-| `GET` | `/users/{id}` | Fetch one contact. | Path identifier | Contact | Network, timeout, server, not found |
-| `POST` | `/users` | Create a contact. | Contact creation request | Contact | Network, timeout, server, validation |
-| `PUT` | `/users/{id}` | Replace a contact. | Contact | Contact | Network, timeout, server, validation |
+| `GET` | `/users` | Fetch the contact list. | None | External contact response list | Network, timeout, server, or HTTP error |
+| `GET` | `/users/{id}` | Fetch one contact. | Path identifier | External contact response | Network, timeout, server, not found |
+| `POST` | `/users` | Create a contact. | Contact creation request | External contact response | Network, timeout, server, validation |
+| `PUT` | `/users/{id}` | Replace a contact. | Contact update request | External contact response | Network, timeout, server, validation |
 | `DELETE` | `/users/{id}` | Delete a contact. | Path identifier | Empty or JSON response | Network, timeout, server, not found |
 
-The service maps the provider's company object to the contact's company name. Address and other provider-only fields are not retained in Redux. The add form requires a non-empty name and a valid email of at most 255 characters. Phone is optional and, when supplied, accepts digits and common phone separators up to 20 characters.
+The service maps the provider's company object to the contact's company name. Address and other provider-only fields are not retained in Redux. The add form requires a non-empty name and a valid email of at most 255 characters. Phone is optional and, when supplied, accepts digits and common phone separators up to 20 characters. These client constraints do not establish external-service validation behavior.
 
 See the [OpenAPI contract](../../public/swagger/openapi.yaml) for wire field definitions and schemas.
 

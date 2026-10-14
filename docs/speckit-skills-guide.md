@@ -36,11 +36,11 @@ constitution → specify/baseline → clarify → plan → tasks → implement
 
 ## Project Context
 
-This is an **Angular 6 contact manager** — a single-page web application with:
-- Zero backend server
-- External dependency on JSONPlaceholder API
-- In-memory shopping cart
-- No database, authentication, or payment processing
+This repository contains a **React contact manager** single-page application with:
+- No application-owned API server or database
+- A browser dependency on the JSONPlaceholder API
+- Redux-managed contacts and cart state; cart data is persisted in localStorage
+- No configured authentication provider, payment processor, or production hosting target
 
 See [docs/inventory.md](./inventory.md) for complete system enumeration.
 

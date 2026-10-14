@@ -31,6 +31,7 @@ npm run performance:check
 - [Local development](./docs/development/local-workflows.md)
 - [Architecture overview](./docs/architecture/repository-overview.md)
 - [Contact API contract](./docs/api/contact-api.md)
+- [Component library](./docs/components.md)
 - [Build and deployment](./docs/operations/build-and-deployment.md)
 - [Client-side data model](./docs/data-model/model.md)
 - [Performance budgets](./docs/operations/performance.md)

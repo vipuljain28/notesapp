@@ -9,4 +9,4 @@ npm run build
 npm run performance:check
 ```
 
-The app lazily imports the cart panel. In development, `observeWebVitals` reports LCP, CLS, and event duration to the browser console. It does not send user data to a monitoring service. Lighthouse scores, deployment measurements, API percentiles, and production user metrics are not collected by this repository.
+The app lazily imports the cart panel. In development, `observeWebVitals` reports LCP, CLS, and INP to the browser console. It does not send user data to a monitoring service. Lighthouse scores, deployment measurements, API percentiles, and production user metrics are not collected by this repository.

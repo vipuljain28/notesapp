@@ -24,7 +24,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Contact'
+                  $ref: '#/components/schemas/ExternalContactResponse'
         '4XX':
           $ref: '#/components/responses/ClientError'
         '5XX':
@@ -45,7 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Contact'
+                $ref: '#/components/schemas/ExternalContactResponse'
         '4XX':
           $ref: '#/components/responses/ClientError'
         '5XX':
@@ -67,7 +67,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Contact'
+                $ref: '#/components/schemas/ContactUpdateRequest'
         '404':
           description: Contact not found.
         '5XX':
@@ -81,7 +81,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Contact'
+              $ref: '#/components/schemas/ExternalContactResponse'
       responses:
         '200':
           description: The service response for the updated contact.
@@ -106,9 +106,10 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    Contact:
+    ExternalContactResponse:
       type: object
       required: [id, name, email]
+      additionalProperties: true
       properties:
         id:
           type: integer
@@ -125,8 +126,12 @@ components:
           maxLength: 20
           description: Optional phone number.
         company:
-          type: string
-          description: Optional company name after client-side mapping.
+          type: object
+          additionalProperties: true
+          properties:
+            name:
+              type: string
+              description: Company name retained by the contact client.
     ContactCreateRequest:
       type: object
       required: [name, email]
@@ -142,6 +147,24 @@ components:
         phone:
           type: string
           maxLength: 20
+    ContactUpdateRequest:
+      type: object
+      required: [id, name, email]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        phone:
+          type: string
+          maxLength: 20
+        company:
+          type: string
     Error:
       type: object
       description: Error response envelope supplied by the external service, when present.

@@ -8,6 +8,11 @@ export default [
   },
   {
     files: ['src/**/*.{ts,tsx}'],
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     languageOptions: {
       parser: typescript.parser,
       parserOptions: {
