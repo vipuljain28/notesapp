@@ -6,6 +6,8 @@
 **Total Tasks**: 22  
 **Estimated Duration**: Phase 3-4 (10 hours)
 
+**Deployment target**: GitHub Pages. Registry publishing and a Node.js production server are outside this static deployment scope; Docker Compose remains for local container testing.
+
 ---
 
 ## Implementation Strategy
@@ -147,17 +149,7 @@
 
 ### Deployment Workflow
 
-- [ ] T018 Create `.github/workflows/deploy.yml` with:
-  - Trigger: manual (workflow_dispatch) + release creation
-  - Environment: staging or production (input parameter)
-  - Prerequisites: CI successful
-  - Deploy steps:
-    1. Pull Docker image from registry
-    2. Stop running container
-    3. Start new container with image
-    4. Run health check
-    5. Log deployment status
-    6. Notify on Slack/email (optional)
+- [X] T018 Create `.github/workflows/deploy.yml` to test and publish the static build to GitHub Pages on `main` or manual dispatch
 
 - [ ] T019 Create deployment approval gates:
   - Require approval for production deployments
@@ -175,14 +167,7 @@
 
 ### Deployment Documentation
 
-- [ ] T022 Create `docs/DEPLOYMENT.md` with:
-  - Prerequisites (Docker, registry access, secrets)
-  - Local deployment test (docker-compose up)
-  - CI/CD workflow overview
-  - Manual deployment steps
-  - Rollback procedure
-  - Monitoring setup
-  - Troubleshooting common issues
+- [X] T022 Document local Docker use, GitHub Pages configuration, workflow behavior, and deployment verification limits in `docs/operations/build-and-deployment.md`
 
 ---
 

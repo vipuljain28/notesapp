@@ -13,7 +13,7 @@ The current documentation describes the React application. Historical inventory 
 | [Component library](components.md) | Run Storybook and review shared and feature components. |
 | [External dependencies](integrations/external-dependencies.md) | Identify network dependencies and externally hosted assets. |
 | [Local development](development/local-workflows.md) | Set up the project and run its configured commands. |
-| [Build and deployment](operations/build-and-deployment.md) | Find configured build output and deployment unknowns. |
+| [Build and deployment](operations/build-and-deployment.md) | Build locally and configure the GitHub Pages deployment. |
 | [Performance budgets](operations/performance.md) | Check enforced build asset limits and local metrics. |
 | [External dependencies](integrations/external-dependencies.md) | Identify services and browser-hosted assets the app uses. |
 | [Historical documentation review](reviews/documentation-review.md) | Review findings about the legacy Angular revision. |
