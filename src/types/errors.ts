@@ -6,14 +6,21 @@ export type ApiErrorKind =
   | 'UNKNOWN'
 
 export class ApiError extends Error {
+  public readonly kind: ApiErrorKind
+  public readonly status: number | undefined
+  public readonly retryable: boolean
+
   constructor(
     message: string,
-    public readonly kind: ApiErrorKind,
-    public readonly status?: number,
-    public readonly retryable = false,
+    kind: ApiErrorKind,
+    status?: number,
+    retryable = false,
     options?: ErrorOptions,
   ) {
     super(message, options)
     this.name = 'ApiError'
+    this.kind = kind
+    this.status = status
+    this.retryable = retryable
   }
 }

@@ -1,8 +1,7 @@
-import { ApiError, type ApiErrorKind } from '@types/errors'
+import { ApiError, type ApiErrorKind } from '@app-types/errors'
 import { retry } from '@utils/retry'
 
 const REQUEST_TIMEOUT_MS = 5000
-const API_BASE_URL = import.meta.env.VITE_API_URL
 
 function classifyError(status?: number): ApiErrorKind {
   if (status === undefined) return 'NETWORK'
@@ -20,7 +19,8 @@ async function request<T>(
   path: string,
   init: RequestInit = {},
 ): Promise<T> {
-  if (!API_BASE_URL) {
+  const baseUrl = import.meta.env.VITE_API_URL
+  if (!baseUrl) {
     throw new ApiError('The API URL is not configured.', 'UNKNOWN')
   }
 
@@ -29,7 +29,7 @@ async function request<T>(
       const controller = new AbortController()
       const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
       const method = init.method ?? 'GET'
-      const url = new URL(path, API_BASE_URL).toString()
+      const url = new URL(path, baseUrl).toString()
 
       try {
         const response = await fetch(url, {
@@ -50,6 +50,10 @@ async function request<T>(
             response.status,
             kind === 'SERVER_ERROR' || kind === 'TIMEOUT',
           )
+        }
+
+        if (response.status === 204 || response.headers.get('content-length') === '0') {
+          return undefined as T
         }
 
         try {

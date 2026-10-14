@@ -24,7 +24,7 @@ export default [
     plugins: {
       react,
       'react-hooks': reactHooks,
-      typescript,
+      '@typescript-eslint': typescript.plugin,
     },
     rules: {
       ...react.configs.recommended.rules,
@@ -32,8 +32,6 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/explicit-function-return-types': 'warn',
-      '@typescript-eslint/explicit-variable-types': 'warn',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },

@@ -35,6 +35,7 @@
       "@services/*": ["services/*"],
       "@hooks/*": ["hooks/*"],
       "@types/*": ["types/*"],
+      "@app-types/*": ["types/*"],
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
       "@mocks/*": ["mocks/*"],

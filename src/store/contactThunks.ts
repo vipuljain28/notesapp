@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { contactService } from '@services/contactService'
-import { ApiError } from '@types/errors'
+import { ApiError } from '@app-types/errors'
 import type { RootState } from '@store/index'
 import type { Contact } from '@store/contactSlice'
 
@@ -27,7 +27,7 @@ export const fetchContacts = createAsyncThunk<
       const fresh =
         contacts.lastFetchedAt !== null &&
         Date.now() - contacts.lastFetchedAt < CONTACT_CACHE_TTL_MS
-      return Boolean(options?.force || !fresh || contacts.items.length === 0)
+      return !contacts.loading && Boolean(options?.force || !fresh || contacts.items.length === 0)
     },
   },
 )
