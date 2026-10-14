@@ -27,7 +27,10 @@ export const fetchContacts = createAsyncThunk<
       const fresh =
         contacts.lastFetchedAt !== null &&
         Date.now() - contacts.lastFetchedAt < CONTACT_CACHE_TTL_MS
-      return !contacts.loading && Boolean(options?.force || !fresh || contacts.items.length === 0)
+      return (
+        !contacts.loading &&
+        Boolean(options?.force || !fresh || contacts.lastFetchedAt === null)
+      )
     },
   },
 )
