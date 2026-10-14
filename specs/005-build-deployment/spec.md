@@ -9,7 +9,15 @@
 
 Establish a complete build and deployment pipeline for the React contact-manager application. This feature defines build tooling, artifact generation, deployment environments, infrastructure automation, and CI/CD workflows. The system enables rapid, reliable deployment of code changes from development through production.
 
-**Target State**: Automated builds with Vite/Webpack, Docker containerization, multi-environment deployments (dev, staging, production), and one-command deployment process.
+**Target State**: Automated builds with Vite, Docker containerization, multi-environment deployments (dev, staging, production), and one-command deployment process.
+
+---
+
+## Clarifications
+
+### Session 2026-10-14
+
+- Q: Build tool TBD (Vite vs Create React App)? → A: Vite confirmed. Aligns with spec 001 decision; already scaffolded and configured. Provides faster HMR, smaller bundles, and modern tooling. Replaces "Vite/Webpack" phrasing with "Vite" throughout.
 
 ---
 

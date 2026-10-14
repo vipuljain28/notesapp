@@ -13,6 +13,15 @@ Establish a robust, centralized state management and API integration layer for t
 
 ---
 
+## Clarifications
+
+### Session 2026-10-14
+
+- Q: When the contact list is cached and the user navigates back to it, how should the cache be invalidated—by time, manual refresh only, or explicit events? → A: Time-based TTL (5 minutes automatic refresh). Contact list cache expires after 5 minutes; user may also manually refresh. Events-based invalidation occurs when contacts are added/updated/deleted (explicit action).
+- Q: Build tool for spec 005 (Vite vs Create React App TBD) → A: Vite (confirmed in spec 001 and maintained throughout).
+
+---
+
 ## User Scenarios & Acceptance Scenarios
 
 ### Primary User Workflows

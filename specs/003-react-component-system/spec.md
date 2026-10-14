@@ -13,6 +13,14 @@ Establish a reusable component system and UI library for the React contact-manag
 
 ---
 
+## Clarifications
+
+### Session 2026-10-14
+
+- Q: Should the component library (Storybook) be deployed as a separate public website or kept as development-only? → A: Local development only. Storybook runs locally with `npm run storybook` for developer reference; not deployed publicly. Reduces infrastructure overhead and simplifies maintenance.
+
+---
+
 ## User Scenarios & Acceptance Scenarios
 
 ### Primary User Workflows

@@ -9,7 +9,15 @@
 
 Establish comprehensive documentation for the React contact-manager project that enables developers to understand architecture, set up local environments, contribute code, and maintain the application. This feature defines documentation structure, onboarding guides, API documentation, troubleshooting guides, and contribution procedures.
 
-**Target State**: Complete documentation suite including README, architecture guide, API docs, development guide, deployment procedures, and troubleshooting guide.
+**Target State**: Complete documentation suite including README, architecture guide, API docs (OpenAPI/Swagger), development guide, deployment procedures, and troubleshooting guide.
+
+---
+
+## Clarifications
+
+### Session 2026-10-14
+
+- Q: For API documentation format (spec 006), should project use OpenAPI/Swagger, manual Markdown, or Postman collections? → A: OpenAPI/Swagger (auto-generated with Swagger UI). Ensures documentation stays synchronized with code, provides interactive exploration, enables client SDK generation, and follows industry standards. Markdown and Postman can complement but Swagger is primary.
 
 ---
 

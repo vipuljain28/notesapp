@@ -13,6 +13,14 @@ Establish a comprehensive testing infrastructure for the React contact-manager a
 
 ---
 
+## Clarifications
+
+### Session 2026-10-14
+
+- Q: Should coverage thresholds apply uniformly to all files or differentiated by risk? → A: Differentiated thresholds (Critical paths 95%: API client, Redux state, validation; Core logic 85%: business logic, utilities; UI components 70%: presentation logic). Aligns testing effort with risk; critical systems justify stricter coverage while UI-heavy code allows flexibility.
+
+---
+
 ## User Scenarios & Acceptance Scenarios
 
 ### Primary User Workflows
