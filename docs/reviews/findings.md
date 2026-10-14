@@ -1,0 +1,19 @@
+# Documentation findings
+
+This page records observed incomplete or surprising behavior for maintainers. It does not prescribe fixes or claim a security audit.
+
+| Severity | Finding | Evidence |
+|---|---|---|
+| Medium | The `/contacts/new` route uses a guard that always returns `true`; there is no authentication implementation behind it. | [Guard](../../src/app/shared/guards/auth.guard.ts), [routes](../../src/app/app-routing.module.ts) |
+| Medium | Cart removal passes a product object to a service method that treats its argument as an array index. The selected product is not reliably removed; JavaScript array-index coercion makes an object act like index zero. | [Cart component](../../src/app/shopping/cart/cart.component.ts), [cart service](../../src/app/shared/services/shopping-cart-data.service.ts) |
+| Medium | The contact edit form binds only the name field to the model sent by the update handler. Phone and email controls have no model binding. | [Contact detail template](../../src/app/contacts/contact-details/contact-details.component.html), [contact detail component](../../src/app/contacts/contact-details/contact-details.component.ts) |
+| Medium | The add-contact submit handler sends the form value without checking whether the form is valid. Required and email validators update form state but do not gate the request. | [Add-contact component](../../src/app/contacts/add-contact/add-contact.component.ts), [add-contact template](../../src/app/contacts/add-contact/add-contact.component.html) |
+| Medium | Contact request subscribers have no error callbacks, so the UI has no application-level request failure message or recovery path. | [Contact list component](../../src/app/contacts/contacts-list/contacts-list.component.ts), [add-contact component](../../src/app/contacts/add-contact/add-contact.component.ts), [contact detail component](../../src/app/contacts/contact-details/contact-details.component.ts) |
+| Low | The contact detail delete button has no click handler, and the contact service has no delete operation. | [Contact detail template](../../src/app/contacts/contact-details/contact-details.component.html), [contact service](../../src/app/contacts/contact.service.ts) |
+| Low | The contact list uses the same empty-state message while its data is undefined and when the list is empty. A pending or failed request is therefore not distinguished from an empty result. | [Contact list component](../../src/app/contacts/contacts-list/contacts-list.component.ts), [contact list template](../../src/app/contacts/contacts-list/contacts-list.component.html) |
+| Low | The product-details route activates a component that only renders static placeholder text and does not look up the selected product. | [Product route](../../src/app/shopping/product-routing.module.ts), [product details component](../../src/app/shopping/product-details/product-details.component.ts), [product details template](../../src/app/shopping/product-details/product-details.component.html) |
+| Low | Cart quantity, checkout, and total-price UI are not connected to cart behavior. | [Cart template](../../src/app/shopping/cart/cart.component.html) |
+| Low | The app component spec and Protractor spec expect generated Angular welcome text that the current root template does not render. This is a source-level mismatch; the specs were not run. | [App component spec](../../src/app/app.component.spec.ts), [e2e spec](../../e2e/src/app.e2e-spec.ts), [root template](../../src/app/app.component.html) |
+| Low | A contacts wrapper component exists but is not registered or routed. The `/contacts` route renders the list component directly. | [Contacts component](../../src/app/contacts/contacts.component.ts), [root routes](../../src/app/app-routing.module.ts) |
+
+The intent behind these behaviors is not stated in the repository. See [unknowns](unknowns.md) for questions that require owner or runtime confirmation.
