@@ -1,5 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { ContactList } from '@components/Contact/ContactList'
-import { CartSummary } from '@components/Shopping/CartSummary'
+import { Spinner } from '@components/Common'
+
+const CartSummary = lazy(() =>
+  import('@components/Shopping/CartSummary').then((module) => ({
+    default: module.CartSummary,
+  })),
+)
 
 function App(): React.JSX.Element {
   return (
@@ -12,7 +19,11 @@ function App(): React.JSX.Element {
         </header>
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
           <ContactList />
-          <aside aria-label="Shopping cart"><CartSummary /></aside>
+          <aside aria-label="Shopping cart">
+            <Suspense fallback={<Spinner message="Loading cart…" />}>
+              <CartSummary />
+            </Suspense>
+          </aside>
         </div>
       </div>
     </main>

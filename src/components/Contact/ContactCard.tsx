@@ -6,7 +6,7 @@ interface ContactCardProps {
   onDelete: (contact: Contact) => void
 }
 
-export function ContactCard({ contact, onDelete }: ContactCardProps): React.JSX.Element {
+function ContactCardView({ contact, onDelete }: ContactCardProps): React.JSX.Element {
   return (
     <Card className="h-full" header={<h3 className="font-semibold text-slate-900">{contact.name}</h3>}>
       <dl className="grid gap-2 text-sm">
@@ -20,3 +20,6 @@ export function ContactCard({ contact, onDelete }: ContactCardProps): React.JSX.
     </Card>
   )
 }
+
+export const ContactCard = memo(ContactCardView)
+import { memo } from 'react'
