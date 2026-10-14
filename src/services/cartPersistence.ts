@@ -23,8 +23,13 @@ export function readCart(): CartState | null {
           typeof item.name === 'string' &&
           'quantity' in item &&
           typeof item.quantity === 'number' &&
+          Number.isInteger(item.quantity) &&
+          item.quantity >= 1 &&
+          item.quantity <= 999 &&
           'price' in item &&
-          typeof item.price === 'number',
+          typeof item.price === 'number' &&
+          Number.isFinite(item.price) &&
+          item.price >= 0,
       )
     ) {
       throw new Error('Stored cart has an invalid shape.')

@@ -1,22 +1,31 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { Button, TextInput } from '@components/Common'
 import type { Contact } from '@store/contactSlice'
 import { useAppDispatch } from '@store/hooks'
-import { createContact } from '@store/contactThunks'
+import { createContact, updateContact } from '@store/contactThunks'
 import { validateContact } from '@utils/validation'
 
 interface ContactFormProps {
-  onCreated?: () => void
+  initialContact?: Contact
+  onSaved?: () => void
 }
 
-export function ContactForm({ onCreated }: ContactFormProps): React.JSX.Element {
+export function ContactForm({ initialContact, onSaved }: ContactFormProps): React.JSX.Element {
   const dispatch = useAppDispatch()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
+  const [name, setName] = useState(initialContact?.name ?? '')
+  const [email, setEmail] = useState(initialContact?.email ?? '')
+  const [phone, setPhone] = useState(initialContact?.phone ?? '')
   const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'phone', string>>>({})
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+
+  useEffect(() => {
+    setName(initialContact?.name ?? '')
+    setEmail(initialContact?.email ?? '')
+    setPhone(initialContact?.phone ?? '')
+    setErrors({})
+    setSubmitError(null)
+  }, [initialContact])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
@@ -28,12 +37,19 @@ export function ContactForm({ onCreated }: ContactFormProps): React.JSX.Element 
 
     setSubmitting(true)
     try {
-      const result = await dispatch(createContact(contact))
-      if (createContact.fulfilled.match(result)) {
-        setName('')
-        setEmail('')
-        setPhone('')
-        onCreated?.()
+      const result = initialContact
+        ? await dispatch(updateContact({ ...contact, id: initialContact.id }))
+        : await dispatch(createContact(contact))
+      if (
+        (initialContact && updateContact.fulfilled.match(result)) ||
+        (!initialContact && createContact.fulfilled.match(result))
+      ) {
+        if (!initialContact) {
+          setName('')
+          setEmail('')
+          setPhone('')
+        }
+        onSaved?.()
       } else {
         setSubmitError(result.payload ?? 'Unable to create contact.')
       }
@@ -48,7 +64,7 @@ export function ContactForm({ onCreated }: ContactFormProps): React.JSX.Element 
       <TextInput label="Email" name="email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} error={errors.email} required maxLength={255} />
       <TextInput label="Phone (optional)" name="phone" type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} error={errors.phone} maxLength={20} />
       {submitError && <p role="alert" className="text-sm text-red-700">{submitError}</p>}
-      <Button type="submit" disabled={submitting}>{submitting ? 'Saving…' : 'Add contact'}</Button>
+      <Button type="submit" disabled={submitting}>{submitting ? 'Saving…' : initialContact ? 'Save changes' : 'Add contact'}</Button>
     </form>
   )
 }

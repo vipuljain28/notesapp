@@ -85,5 +85,8 @@ export const contactSlice = createSlice({
         if (state.selectedId === action.payload) state.selectedId = null
         state.lastFetchedAt = null
       })
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.error = action.payload ?? 'Unable to delete contact.'
+      })
   },
 })

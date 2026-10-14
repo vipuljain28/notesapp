@@ -3,10 +3,11 @@ import { Button, Card } from '@components/Common'
 
 interface ContactCardProps {
   contact: Contact
+  onEdit: (contact: Contact) => void
   onDelete: (contact: Contact) => void
 }
 
-function ContactCardView({ contact, onDelete }: ContactCardProps): React.JSX.Element {
+function ContactCardView({ contact, onEdit, onDelete }: ContactCardProps): React.JSX.Element {
   return (
     <Card className="h-full" header={<h3 className="font-semibold text-slate-900">{contact.name}</h3>}>
       <dl className="grid gap-2 text-sm">
@@ -15,7 +16,10 @@ function ContactCardView({ contact, onDelete }: ContactCardProps): React.JSX.Ele
         {contact.company && <div><dt className="sr-only">Company</dt><dd className="text-slate-600">{contact.company}</dd></div>}
       </dl>
       <div className="mt-4 flex justify-end">
-        <Button type="button" variant="danger" className="px-3 py-1.5 text-sm" onClick={() => onDelete(contact)}>Delete</Button>
+        <div className="flex gap-2">
+          <Button type="button" variant="secondary" className="px-3 py-1.5 text-sm" onClick={() => onEdit(contact)}>Edit</Button>
+          <Button type="button" variant="danger" className="px-3 py-1.5 text-sm" onClick={() => onDelete(contact)}>Delete</Button>
+        </div>
       </div>
     </Card>
   )
