@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# Contact manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Contact Manager is a React 18 and TypeScript single-page application built with Vite. It loads contacts from JSONPlaceholder, keeps contact state in Redux, and stores cart state in browser `localStorage`.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Use Node.js 22 and npm. From the repository root:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the address printed by Vite, normally `http://localhost:5173`.
+
+## Verify changes
+
+```sh
+npm run type-check
+npm run lint
+npm run test:run
+npm run build
+npm run performance:check
+```
+
+`npm run test:coverage` creates HTML, text, JSON, and LCOV coverage reports. The development server reads `VITE_API_URL` from the Vite environment. See [.env.example](./.env.example) for the required variable name.
+
+## Project documentation
+
+- [Documentation index](./docs/README.md)
+- [Local development](./docs/development/local-workflows.md)
+- [Architecture overview](./docs/architecture/repository-overview.md)
+- [Contact API contract](./docs/api/contact-api.md)
+- [Build and deployment](./docs/operations/build-and-deployment.md)
+- [Client-side data model](./docs/data-model/model.md)
+- [Performance budgets](./docs/operations/performance.md)
+
+The app uses the public JSONPlaceholder demo API. Its write endpoints return simulated responses and do not provide durable contact storage.

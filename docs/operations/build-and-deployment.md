@@ -1,28 +1,32 @@
 # Build and deployment
 
-The repository defines Angular CLI build configurations but no CI workflow, container, hosting manifest, release procedure, or deployment target. A successful build would create static browser assets; how those assets are published and served is not defined here.
+The repository produces a static Vite build and a Docker image served by Nginx. [`Dockerfile`](../../Dockerfile), [`nginx.conf`](../../nginx.conf), and [`docker-compose.yml`](../../docker-compose.yml) define the local container path. The GitHub Actions workflow validates changes and uploads the `dist/` build artifact; it does not publish an image or deploy to a hosted environment.
 
-Primary sources: [Angular CLI build and serve targets](../../angular.json), [production environment](../../src/environments/environment.prod.ts), [development environment](../../src/environments/environment.ts), and [application bootstrap](../../src/main.ts).
+## Build
 
-## Build outputs
+```sh
+npm ci
+npm run type-check
+npm run lint
+npm run test:run
+npm run build
+npm run performance:check
+```
 
-The configured output path is `dist/contact-manager-ng6`. The production configuration enables optimization, hashed output names, ahead-of-time compilation, CSS extraction, license extraction, and the build optimizer. It replaces the development environment file with the production environment file. The production flag enables Angular production mode during bootstrap.
+Vite writes the static application to `dist/` with content-hashed assets. The build reads `VITE_API_URL` at build time. Keep credentials out of Vite variables because values included in a browser build are public.
 
-The environment files contain only a boolean `production` value. Neither the API URL nor other runtime service settings are configurable through these files.
+## Run the container locally
 
-## Environment configuration
+```sh
+docker compose up --build
+```
 
-| Key | Development value | Production value | Usage |
-|---|---|---|---|
-| `environment.production` | `false` | `true` | The production build replaces the development environment file; bootstrap uses this value to enable Angular production mode. |
+The application is served at `http://localhost:8080`. Nginx falls back to `index.html` for client-side paths and returns `200` from `/health`. The image uses a Node.js build stage and an Nginx runtime stage.
 
-No environment variables are read by the application.
+## CI behavior
 
-## Operational boundaries
+On pushes to `main` or `develop` and on pull requests, [the CI workflow](../../.github/workflows/ci.yml) installs the lockfile dependencies, runs type checking, lint, tests, build, and the bundle budget check, then uploads `dist/` as an artifact.
 
-- There are no checked-in CI/CD workflows or deployment descriptors.
-- The repository does not specify a static host, web server, domain, release process, or SPA route-fallback configuration.
-- Contact pages rely on the remote JSONPlaceholder URL, and the browser shell relies on public CDNs and image hosts. Availability, response persistence, and network policy are outside this repository.
-- The build and deployment commands have not been run as part of this documentation review.
+## Deployment boundary
 
-Use [Local development](../development/local-workflows.md) for the configured build and test commands. Hosting requirements and production behavior remain unverified.
+No registry, hosting provider, deployment target, production domain, or environment credentials are configured in this repository. Production publishing and rollback cannot be verified here. A deployment workflow requires the project owner to select and configure those external resources.

@@ -4,6 +4,7 @@ This documentation describes the checked-in application, not a proposed design. 
 
 | Document | Use it to |
 |---|---|
+| [Project README](../README.md) | Install, run, and verify the application. |
 | [System inventory](inventory.md) | Find all APIs, settings, databases, external systems, and scheduled jobs (with counts). |
 | [Repository overview](architecture/repository-overview.md) | Understand the app boundary, modules, routes, and runtime paths. |
 | [Data model](data-model/model.md) | Find the client-side data shapes and where state lives. |
@@ -11,6 +12,7 @@ This documentation describes the checked-in application, not a proposed design. 
 | [External dependencies](integrations/external-dependencies.md) | Identify network dependencies and externally hosted assets. |
 | [Local development](development/local-workflows.md) | Set up the project and run its configured commands. |
 | [Build and deployment](operations/build-and-deployment.md) | Find configured build output and deployment unknowns. |
+| [Performance budgets](operations/performance.md) | Check enforced build asset limits and local metrics. |
 | [Documentation review](reviews/documentation-review.md) | Review findings, confidence limits, and source coverage. |
 | [Findings](reviews/findings.md) | Read observed defects and incomplete behavior. |
 | [Unknowns](reviews/unknowns.md) | See questions the repository does not answer. |
