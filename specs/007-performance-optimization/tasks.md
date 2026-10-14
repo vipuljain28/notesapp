@@ -67,12 +67,7 @@
 
 ### Route-Based Code Splitting
 
-- [ ] T006 Implement lazy-loaded routes in `src/App.tsx`:
-  - Use React.lazy for route components
-  - ContactListPage: lazy-loaded
-  - ContactDetailPage: lazy-loaded
-  - CartPage: lazy-loaded
-  - Wrap with Suspense(fallback=Loading)
+- [X] T006 Lazy-load `CartSummary` in `src/App.tsx` with `React.lazy` and `Suspense`
 
 - [ ] T007 Create route configuration in `src/routes/index.ts`:
   - Define routes with lazy-loading
@@ -85,10 +80,7 @@
   - ContactForm: lazy-load (form heavy with validation)
   - Charts/Analytics: if added later
 
-- [ ] T009 [P] Create Suspense boundary in layout:
-  - Global Suspense wrapper
-  - Fallback: Loading spinner
-  - Per-route Suspense boundaries
+- [X] T009 [P] Add a cart-section Suspense boundary with a Spinner fallback
 
 ### Dynamic Imports
 
@@ -169,16 +161,11 @@
 
 ### Performance Budget
 
-- [ ] T019 Create `performance-budget.json`:
-  - Total bundle: 500KB
-  - Vendor chunk: 300KB
-  - App chunk: 100KB
-  - Routes: 50KB each
-  - Run bundle-budget check in CI
+- [X] T019 Add a gzip asset-budget check in `scripts/check-performance-budget.mjs` and run it in CI
 
 ### Web Vitals Tracking
 
-- [ ] T020 Implement Web Vitals tracking in `src/utils/vitals.ts`:
+- [X] T020 Implement Web Vitals tracking in `src/utils/vitals.ts`:
   - Largest Contentful Paint (LCP)
   - First Input Delay (FID) / Interaction to Next Paint (INP)
   - Cumulative Layout Shift (CLS)

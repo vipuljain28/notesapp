@@ -31,10 +31,10 @@
 
 ### Test Configuration
 
-- [ ] T001 Update `vitest.config.ts` with globals, setupFiles, environment (jsdom), coverage config
-- [ ] T002 Create test setup file in `src/tests/setup.ts` with library initialization (@testing-library/jest-dom)
+- [X] T001 Update `vitest.config.ts` with globals, setupFiles, environment (jsdom), coverage config
+- [X] T002 Create test setup file in `src/tests/setup.ts` with library initialization (@testing-library/jest-dom)
 - [ ] T003 Create test utilities file in `src/tests/utils.ts` with render helpers, custom matchers
-- [ ] T004 Setup MSW server in `src/tests/mocks.ts` with server start/stop hooks
+- [X] T004 Setup MSW server in `src/mocks/server.ts` with test lifecycle hooks
 - [ ] T005 Create mock data factory in `src/tests/factories.ts` - ContactFactory, CartItemFactory
 
 ### Test Helpers & Utilities
@@ -46,7 +46,7 @@
 ### Validation & Type Safety
 
 - [ ] T009 Create test type definitions in `src/tests/types.ts` (for test mocks, fixtures)
-- [ ] T010 Verify tsconfig test paths include src/tests with proper alias mapping
+- [X] T010 Verify tsconfig test paths include src/tests with proper alias mapping
 
 ---
 
@@ -57,7 +57,7 @@
 
 ### API Client Tests
 
-- [ ] T011 Write tests in `src/services/__tests__/api.test.ts`:
+- [X] T011 Write tests in `src/services/__tests__/api.test.ts`:
   - GET endpoints (getContacts, getContactById) - success and error
   - POST/PUT endpoints (createContact, updateContact) - success and error
   - DELETE endpoint - success and error
@@ -67,13 +67,13 @@
 
 ### Redux Tests
 
-- [ ] T012 [P] Write contactSlice tests in `src/store/__tests__/contactSlice.test.ts`:
+- [X] T012 [P] Write contactSlice tests in `src/store/__tests__/contactSlice.test.ts`:
   - Initial state
   - Sync actions (addContact, removeContact)
   - Async thunk states (pending, fulfilled, rejected)
   - Error payload handling
 
-- [ ] T013 [P] Write cartSlice tests in `src/store/__tests__/cartSlice.test.ts`:
+- [X] T013 [P] Write cartSlice tests in `src/store/__tests__/cartSlice.test.ts`:
   - Add/remove items
   - Quantity updates
   - Persistence integration
@@ -98,7 +98,7 @@
 
 ### Validation Tests
 
-- [ ] T017 [P] Write validation tests in `src/utils/__tests__/validation.test.ts`:
+- [X] T017 [P] Write validation tests in `src/utils/__tests__/validation.test.ts`:
   - Email validation
   - Phone validation (required per data-model)
   - Name length constraints (per data-model)
@@ -114,7 +114,7 @@
 
 ### Retry Logic Tests
 
-- [ ] T019 [P] Write retry tests in `src/utils/__tests__/retry.test.ts`:
+- [X] T019 [P] Write retry tests in `src/utils/__tests__/retry.test.ts`:
   - Exponential backoff (1s, 2s, 4s)
   - Retry only transient errors (5xx, NETWORK, TIMEOUT)
   - Max retry attempts (3)
@@ -197,13 +197,13 @@
 
 ### Coverage Configuration
 
-- [ ] T028 Update `vitest.config.ts` with coverage thresholds:
+- [X] T028 Update `vitest.config.ts` with coverage thresholds:
   - Critical paths: 95% (api.ts, contactSlice.ts, validation.ts)
   - Core logic: 85% (hooks, utilities)
   - UI: 70% (components)
   - Overall: 80%
 
-- [ ] T029 Create coverage report script in `package.json`:
+- [X] T029 Create coverage report script in `package.json`:
   - `npm run test:coverage` - generate HTML and LCOV reports
   - Output to `coverage/` directory
 

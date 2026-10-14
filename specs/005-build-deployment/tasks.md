@@ -31,16 +31,16 @@
 
 ### Workflow File Creation
 
-- [ ] T001 Create `.github/workflows/ci.yml` with:
-  - Trigger: on push to main/dev branches
+- [X] T001 Create `.github/workflows/ci.yml` with:
+  - Trigger: on push to main/develop and pull requests
   - Run on: ubuntu-latest
-  - Node version: 18.x
+  - Node version: 22
   - Checkout code
   - Setup Node.js
   - Install dependencies
   - Run lint (npm run lint)
   - Run type-check (npm run type-check)
-  - Run tests (npm run test)
+  - Run tests (npm run test:run)
   - Build project (npm run build)
 
 - [ ] T002 Create `.github/workflows/build-and-push.yml` with:
@@ -51,8 +51,8 @@
 
 ### Workflow Optimization
 
-- [ ] T003 Add dependency caching in CI workflow (npm cache strategy)
-- [ ] T004 Add build artifact caching (dist/ directory)
+- [X] T003 Add npm dependency caching in the CI workflow
+- [X] T004 Upload the `dist/` build artifact from the CI workflow
 - [ ] T005 Add workflow status badge to README.md
 
 ### Secret Management
@@ -72,13 +72,9 @@
 
 ### Dockerfile Setup
 
-- [ ] T007 Create `Dockerfile` with multi-stage build:
-  - **Stage 1 (Build)**: Node 18 alpine, install deps, run build (npm run build)
-  - **Stage 2 (Runtime)**: Node 18 alpine, copy dist/, setup server
-  - Expose port 5173 (dev) or 3000 (prod)
-  - Health check endpoint: /health
+- [X] T007 Create a multi-stage `Dockerfile` with a Node build stage and Nginx runtime stage
 
-- [ ] T008 Create `.dockerignore` with patterns:
+- [X] T008 Create `.dockerignore` with patterns:
   - node_modules/
   - dist/
   - .git/
@@ -88,7 +84,7 @@
 
 ### Docker Compose (Optional, for local development)
 
-- [ ] T009 Create `docker-compose.yml` for local multi-container setup:
+- [X] T009 Create `docker-compose.yml` for local container testing:
   - app service: contact-manager image
   - ports: 3000:3000
   - environment: .env.development

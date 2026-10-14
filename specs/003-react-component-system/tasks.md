@@ -30,27 +30,27 @@
 
 ### Base Components Setup
 
-- [ ] T001 Create `src/components/Common/` directory with index.ts barrel export
-- [ ] T002 Create Button component in `src/components/Common/Button.tsx` with variants (primary, secondary, danger, success), sizes (sm, md, lg), disabled state, and Tailwind styling
-- [ ] T003 Create TextInput component in `src/components/Common/TextInput.tsx` supporting types (text, email, password, number), error display, placeholder, disabled state
-- [ ] T004 Create Select component in `src/components/Common/Select.tsx` with dropdown options, multi-select option, error state, disabled state
-- [ ] T005 Create Card component in `src/components/Common/Card.tsx` with optional header, body, footer slots, clickable variant
-- [ ] T006 Create Modal component in `src/components/Common/Modal.tsx` with backdrop, focus trap, scroll handling, close button
+- [X] T001 Create `src/components/Common/` directory with index.ts barrel export
+- [X] T002 Create Button component in `src/components/Common/Button.tsx` with variants (primary, secondary, danger, success), sizes (sm, md, lg), disabled state, and Tailwind styling
+- [X] T003 Create TextInput component in `src/components/Common/TextInput.tsx` supporting types (text, email, password, number), error display, placeholder, disabled state
+- [X] T004 Create Select component in `src/components/Common/Select.tsx` with dropdown options, multi-select option, error state, disabled state
+- [X] T005 Create Card component in `src/components/Common/Card.tsx` with optional header, body, footer slots, clickable variant
+- [X] T006 Create Modal component in `src/components/Common/Modal.tsx` with backdrop, focus trap, scroll handling, close button
 - [ ] T007 [P] Create Loading component in `src/components/Common/Loading.tsx` with spinner and skeleton variants
-- [ ] T008 [P] Create Badge component in `src/components/Common/Badge.tsx` for status display (success, warning, error, info)
-- [ ] T009 [P] Create Alert component in `src/components/Common/Alert.tsx` for inline messages with icons
+- [X] T008 [P] Create Badge component in `src/components/Common/Badge.tsx` for status display (success, warning, error, info)
+- [X] T009 [P] Create Alert component in `src/components/Common/Alert.tsx` for inline messages with icons
 
 ### Design System Integration
 
 - [ ] T010 Update `tailwind.config.js` with design tokens (colors, spacing, typography per Constitution P13)
 - [ ] T011 Create `src/types/theme.ts` with TypeScript definitions for theme colors and sizes
 - [ ] T012 Create `src/constants/theme.ts` exporting theme constants used in components
-- [ ] T013 Update `src/index.css` with additional component-level styles if needed (not Tailwind-only)
+- [X] T013 Update `src/index.css` with additional component-level styles if needed (not Tailwind-only)
 
 ### Component Testing
 
-- [ ] T014 [P] Write Button tests in `src/components/Common/__tests__/Button.test.tsx` (variants, disabled, click handler)
-- [ ] T015 [P] Write TextInput tests in `src/components/Common/__tests__/TextInput.test.tsx` (types, value changes, error display)
+- [X] T014 [P] Write Button tests in `src/components/Common/__tests__/Button.test.tsx` (variants, disabled, click handler)
+- [X] T015 [P] Write TextInput tests in `src/components/Common/__tests__/TextInput.test.tsx` (types, value changes, error display)
 - [ ] T016 [P] Write Card tests in `src/components/Common/__tests__/Card.test.tsx` (slots render correctly)
 - [ ] T017 [P] Write Modal tests in `src/components/Common/__tests__/Modal.test.tsx` (focus management, close on backdrop)
 
@@ -63,17 +63,17 @@
 
 ### Contact Components
 
-- [ ] T018 [US1] Create `src/components/Contact/` directory with index.ts barrel export
-- [ ] T019 [US1] Create ContactList component in `src/components/Contact/ContactList.tsx` - displays contacts in grid/list, loading and error states, pagination (future)
-- [ ] T020 [US1] Create ContactCard component in `src/components/Contact/ContactCard.tsx` - shows contact details, edit/delete buttons, clickable to detail view
-- [ ] T021 [US1] Create ContactForm component in `src/components/Contact/ContactForm.tsx` - form for add/edit with validation, required fields per data-model (name, email, phone), submit/cancel handlers
+- [X] T018 [US1] Create `src/components/Contact/` directory with index.ts barrel export
+- [X] T019 [US1] Create ContactList component in `src/components/Contact/ContactList.tsx` - displays contacts in grid/list, loading and error states, pagination (future)
+- [X] T020 [US1] Create ContactCard component in `src/components/Contact/ContactCard.tsx` - shows contact details, edit/delete buttons, clickable to detail view
+- [X] T021 [US1] Create ContactForm component in `src/components/Contact/ContactForm.tsx` - form for add/edit with validation, required fields per data-model (name, email, phone), submit/cancel handlers
 - [ ] T022 [US1] Create ContactDetail component in `src/components/Contact/ContactDetail.tsx` - full contact view with edit/delete modals
 
 ### Shopping Components
 
-- [ ] T023 [US2] Create `src/components/Shopping/` directory with index.ts barrel export
-- [ ] T024 [US2] Create CartSummary component in `src/components/Shopping/CartSummary.tsx` - shows item count, total price, checkout button
-- [ ] T025 [US2] Create CartItem component in `src/components/Shopping/CartItem.tsx` - displays item with quantity, price, remove button
+- [X] T023 [US2] Create `src/components/Shopping/` directory with index.ts barrel export
+- [X] T024 [US2] Create CartSummary component in `src/components/Shopping/CartSummary.tsx` - shows item count, total price, checkout button
+- [X] T025 [US2] Create CartItem component in `src/components/Shopping/CartItem.tsx` - displays item with quantity, price, remove button
 
 ### Component Integration
 
@@ -95,24 +95,24 @@
 
 ### Storybook Configuration
 
-- [ ] T031 Install Storybook dependencies (@storybook/react, @storybook/addon-essentials)
-- [ ] T032 Create `.storybook/main.ts` configuration for React, TypeScript, Tailwind
-- [ ] T033 Create `.storybook/preview.ts` with global decorators (theme provider if needed)
-- [ ] T034 Update `package.json` with `storybook` script (npm run storybook)
+- [X] T031 Install Storybook dependencies (@storybook/react, @storybook/addon-essentials)
+- [X] T032 Create `.storybook/main.ts` configuration for React, TypeScript, Tailwind
+- [X] T033 Create `.storybook/preview.ts` with global decorators (theme provider if needed)
+- [X] T034 Update `package.json` with `storybook` script (npm run storybook)
 
 ### Component Stories
 
-- [ ] T035 [P] Create Button stories in `src/components/Common/Button.stories.tsx` - all variants, disabled states
-- [ ] T036 [P] Create TextInput stories in `src/components/Common/TextInput.stories.tsx` - types, error states
-- [ ] T037 [P] Create Card stories in `src/components/Common/Card.stories.tsx` - with/without slots
-- [ ] T038 [P] Create Modal stories in `src/components/Common/Modal.stories.tsx` - open/close states
+- [X] T035 [P] Create Button stories in `src/components/Common/Button.stories.tsx` - all variants, disabled states
+- [X] T036 [P] Create TextInput stories in `src/components/Common/TextInput.stories.tsx` - types, error states
+- [X] T037 [P] Create Card stories in `src/components/Common/Card.stories.tsx` - with/without slots
+- [X] T038 [P] Create Modal stories in `src/components/Common/Modal.stories.tsx` - open/close states
 - [ ] T039 [P] Create ContactList stories in `src/components/Contact/ContactList.stories.tsx` - loading, populated, empty states
 - [ ] T040 [P] Create CartSummary stories in `src/components/Shopping/CartSummary.stories.tsx` - empty, with items
 
 ### Documentation
 
-- [ ] T041 Create component documentation in `docs/COMPONENT_SYSTEM.md` - overview, usage examples, design tokens
-- [ ] T042 Update README.md with link to component system documentation
+- [X] T041 Create component documentation in `docs/components.md` - component overview and Storybook usage
+- [X] T042 Update README.md with link to component system documentation
 
 ---
 

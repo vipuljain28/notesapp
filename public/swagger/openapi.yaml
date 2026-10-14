@@ -67,7 +67,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContactUpdateRequest'
+                $ref: '#/components/schemas/ExternalContactResponse'
         '404':
           description: Contact not found.
         '5XX':
@@ -81,14 +81,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExternalContactResponse'
+              $ref: '#/components/schemas/ContactUpdateRequest'
       responses:
         '200':
           description: The service response for the updated contact.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Contact'
+                $ref: '#/components/schemas/ContactUpdateRequest'
         '4XX':
           $ref: '#/components/responses/ClientError'
         '5XX':

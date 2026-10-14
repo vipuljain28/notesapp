@@ -28,4 +28,13 @@ describe('cartSlice', () => {
       total: 900,
     })).total).toBe(3)
   })
+
+  it('ignores invalid cart additions and supports clearing the cart', () => {
+    const state = reduce(undefined, addItem({ id: 1, name: 'Notebook', quantity: 1, price: 3 }))
+    expect(reduce(state, addItem({ id: 2, name: 'Bad', quantity: 0, price: 3 }))).toEqual(state)
+    expect(reduce(state, addItem({ id: 3, name: 'Bad', quantity: 1, price: -1 }))).toEqual(state)
+    expect(reduce(state, updateQuantity({ id: 2, quantity: 2 }))).toEqual(state)
+    expect(reduce(state, removeItem(999))).toEqual(state)
+    expect(reduce(state, cartSlice.actions.clearCart())).toEqual({ items: [], total: 0 })
+  })
 })

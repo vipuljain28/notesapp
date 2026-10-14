@@ -31,7 +31,7 @@
 
 ### README Creation
 
-- [ ] T001 Create `README.md` with sections:
+- [X] T001 Create `README.md` with sections:
   - Project overview (1 paragraph)
   - Features (bullet list from spec)
   - Tech stack (list with versions)
@@ -73,7 +73,7 @@
 
 ### Architecture Overview
 
-- [ ] T005 Create `docs/ARCHITECTURE.md` with:
+- [X] T005 Create `docs/architecture/repository-overview.md` with:
   - System overview (app, API, storage)
   - Technology stack rationale
   - Component hierarchy (Common, Contact, Shopping)
@@ -108,7 +108,7 @@
 
 ### API Client Documentation
 
-- [ ] T009 [P] Create `docs/API_CLIENT.md` with:
+- [X] T009 [P] Create `docs/api/contact-api.md` with:
   - API client overview
   - Retry logic (exponential backoff)
   - Error handling strategy
@@ -125,7 +125,7 @@
 
 ### OpenAPI Specification
 
-- [ ] T010 Create `swagger/openapi.yaml` with:
+- [X] T010 Create `public/swagger/openapi.yaml` with:
   - API info (title, version, description)
   - Servers (dev: localhost:5173, staging, production)
   - Paths:
@@ -138,7 +138,7 @@
   - Security (if applicable)
   - Response codes with descriptions
 
-- [ ] T011 Define Contact schema in `swagger/openapi.yaml`:
+- [X] T011 Define Contact schema in `public/swagger/openapi.yaml`:
   - id: integer (required)
   - name: string (required, max length per data-model)
   - email: string (required, email format)
@@ -147,7 +147,7 @@
   - createdAt: date-time (auto)
   - updatedAt: date-time (auto)
 
-- [ ] T012 Create error schemas in `swagger/openapi.yaml`:
+- [X] T012 Create error schemas in `public/swagger/openapi.yaml`:
   - 400: Bad Request (validation error)
   - 404: Not Found
   - 500: Server Error

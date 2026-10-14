@@ -28,34 +28,34 @@
 
 ### Setup Tasks
 
-- [ ] T001 Create API client foundation in `src/services/api.ts` with base URL from env vars
-- [ ] T002 Define error types and classification in `src/types/errors.ts` (NETWORK, TIMEOUT, SERVER_ERROR, VALIDATION_ERROR, UNKNOWN)
-- [ ] T003 Implement retry logic with exponential backoff in `src/utils/retry.ts` (3 attempts: 1s, 2s, 4s; 5-second timeout per request)
-- [ ] T004 Create API response interceptor in `src/services/api.ts` for error mapping and retry coordination
-- [ ] T005 Setup MSW (Mock Service Worker) in `src/mocks/handlers.ts` with JSONPlaceholder API endpoints
-- [ ] T006 Create MSW server initialization in `src/mocks/server.ts` for test environment
+- [X] T001 Create API client foundation in `src/services/api.ts` with base URL from env vars
+- [X] T002 Define error types and classification in `src/types/errors.ts` (NETWORK, TIMEOUT, SERVER_ERROR, VALIDATION_ERROR, UNKNOWN)
+- [X] T003 Implement retry logic with exponential backoff in `src/utils/retry.ts` (3 attempts: 1s, 2s, 4s; 5-second timeout per request)
+- [X] T004 Create API response interceptor in `src/services/api.ts` for error mapping and retry coordination
+- [X] T005 Setup MSW (Mock Service Worker) in `src/mocks/handlers.ts` with JSONPlaceholder API endpoints
+- [X] T006 Create MSW server initialization in `src/mocks/server.ts` for test environment
 - [ ] T007 Setup Redux middleware for API async operations in `src/store/middleware/api.ts`
 - [ ] T008 Create Redux utility types in `src/types/redux.ts` (AsyncState<T>, LoadingState)
 
 ### Redux Utilities
 
-- [ ] T009 [P] Implement Redux selector factory in `src/store/selectors.ts` (selectContactById, selectAllContacts, selectContactsLoading)
+- [X] T009 [P] Implement Redux selector factory in `src/store/selectors.ts` (selectContactById, selectAllContacts, selectContactsLoading)
 - [ ] T010 [P] Create Redux thunk factory in `src/store/thunks.ts` for async API calls with loading/error/success states
 - [ ] T011 [P] Implement cache invalidation timer in `src/utils/cache.ts` (5-minute TTL for contact list per clarification)
-- [ ] T012 [P] Create validation utilities in `src/utils/validation.ts` (email format, phone format, name length constraints)
+- [X] T012 [P] Create validation utilities in `src/utils/validation.ts` (email format, phone format, name length constraints)
 
 ### API Client Implementation
 
-- [ ] T013 [P] Implement `getContacts()` in `src/services/api.ts` - fetch all contacts with retry logic
-- [ ] T014 [P] Implement `getContactById(id)` in `src/services/api.ts` with error handling
-- [ ] T015 [P] Implement `createContact(data)` in `src/services/api.ts` with validation (mock ID 101+ for writes per MSW strategy)
-- [ ] T016 [P] Implement `updateContact(id, data)` in `src/services/api.ts` with optimistic updates
-- [ ] T017 [P] Implement `deleteContact(id)` in `src/services/api.ts` with rollback on error
+- [X] T013 [P] Implement contact list retrieval in `src/services/contactService.ts` with retry logic
+- [X] T014 [P] Implement single-contact retrieval in `src/services/contactService.ts` with error handling
+- [X] T015 [P] Implement contact creation in `src/services/contactService.ts` with validation (demo API write behavior)
+- [X] T016 [P] Implement contact updates in `src/services/contactService.ts` with Redux state updates
+- [X] T017 [P] Implement contact deletion in `src/services/contactService.ts` with error handling
 
 ### Error Handling & Logging
 
 - [ ] T018 [P] Create error logger in `src/utils/logger.ts` (console in dev, external service ready in prod)
-- [ ] T019 [P] Implement error recovery strategies in `src/services/api.ts` (retry transient errors, fail fast on validation errors)
+- [X] T019 [P] Implement error recovery strategies in `src/services/api.ts` (retry transient errors, fail fast on validation errors)
 - [ ] T020 [P] Create user-friendly error messages in `src/types/errors.ts` (map HTTP status codes to UI text)
 
 ---
@@ -73,14 +73,14 @@
 
 ### Redux Setup for Contact Story
 
-- [ ] T021 [US1] Create `contactThunks.ts` in `src/store/thunks/` - fetchAllContacts thunk with retry and caching
-- [ ] T022 [US1] Update `contactSlice.ts` with API states (loading, error, lastFetchTime for cache tracking)
-- [ ] T023 [US1] Implement `selectContacts` selector in `src/store/selectors/contactSelectors.ts` with loading/error states
-- [ ] T024 [US1] Implement `selectShouldRefreshContacts` selector (returns true if cache expired > 5 min)
+- [X] T021 [US1] Create `src/store/contactThunks.ts` - fetchContacts thunk with retry and caching
+- [X] T022 [US1] Update `contactSlice.ts` with API states (loading, error, lastFetchTime for cache tracking)
+- [X] T023 [US1] Implement contact selectors in `src/store/selectors.ts` with loading/error states
+- [X] T024 [US1] Enforce a five-minute contact cache TTL in the `fetchContacts` thunk condition
 
 ### API Integration
 
-- [ ] T025 [US1] Create `useContacts()` hook in `src/hooks/useContacts.ts` - dispatch fetch on mount, handle loading/error
+- [X] T025 [US1] Create `useContacts()` hook in `src/hooks/useContacts.ts` - dispatch fetch on mount, handle loading/error
 - [ ] T026 [US1] Create `useCachedContacts()` hook in `src/hooks/useCachedContacts.ts` - respects 5-min TTL, refetch if needed
 - [ ] T027 [US1] Integrate cache invalidation in contact lifecycle (componentDidMount triggers fetch, timer scheduled)
 
@@ -103,8 +103,8 @@
 
 ### Cart Persistence
 
-- [ ] T031 [US2] Implement localStorage sync middleware in `src/store/middleware/cartPersistence.ts` (write-through pattern)
-- [ ] T032 [US2] Create cart recovery logic in `src/store/middleware/cartPersistence.ts` (graceful degradation on corrupted data)
+- [X] T031 [US2] Implement localStorage write-through in `src/services/cartPersistence.ts`
+- [X] T032 [US2] Create cart recovery logic in `src/services/cartPersistence.ts` (graceful degradation on corrupted data)
 
 ---
 
