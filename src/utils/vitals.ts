@@ -25,7 +25,11 @@ export function observeWebVitals(report: VitalReporter): () => void {
   observe('layout-shift', (entries) => {
     const value = entries
       .filter((entry) => !('hadRecentInput' in entry && entry.hadRecentInput))
-      .reduce((total, entry) => total + (entry as PerformanceEntry & { value: number }).value, 0)
+      .reduce(
+        (total, entry) =>
+          total + (entry as PerformanceEntry & { value: number }).value,
+        0,
+      )
     report({ name: 'CLS', value, unit: 'score' })
   })
   observe('event', (entries) => {

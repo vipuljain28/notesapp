@@ -32,7 +32,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/no-explicit-any': 'error',
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     },
   },
 ]

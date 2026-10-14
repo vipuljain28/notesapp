@@ -24,3 +24,5 @@ The browser client sends contact requests to the base URL configured by `VITE_AP
 The service maps the provider's company object to the contact's company name. Address and other provider-only fields are not retained in Redux. The add form requires a non-empty name and a valid email of at most 255 characters. Phone is optional and, when supplied, accepts digits and common phone separators up to 20 characters.
 
 See the [OpenAPI contract](../../public/swagger/openapi.yaml) for wire field definitions and schemas.
+
+The interactive Swagger UI is available at `/swagger/` when the app is served locally. It loads Swagger UI assets from a public CDN.

@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Contact Manager client API
+  version: 1.0.0
+  description: >
+    Client-side contract for the contact operations used by this application.
+    The runtime default is JSONPlaceholder. Its write operations return demo
+    responses and do not persist contact changes.
+servers:
+  - url: https://jsonplaceholder.typicode.com
+    description: Default demo API configured by VITE_API_URL
+tags:
+  - name: Contacts
+paths:
+  /users:
+    get:
+      tags: [Contacts]
+      summary: List contacts
+      responses:
+        '200':
+          description: Contact records returned by the service.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '4XX':
+          $ref: '#/components/responses/ClientError'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags: [Contacts]
+      summary: Create a contact
+      description: The demo service simulates this operation and does not persist the result.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateRequest'
+      responses:
+        '201':
+          description: The service response for the submitted contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '4XX':
+          $ref: '#/components/responses/ClientError'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: Contact identifier.
+        schema:
+          type: integer
+    get:
+      tags: [Contacts]
+      summary: Get a contact
+      responses:
+        '200':
+          description: The requested contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '404':
+          description: Contact not found.
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags: [Contacts]
+      summary: Replace a contact
+      description: The demo service simulates this operation and does not persist the result.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '200':
+          description: The service response for the updated contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '4XX':
+          $ref: '#/components/responses/ClientError'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags: [Contacts]
+      summary: Delete a contact
+      description: The demo service simulates this operation and does not persist the change.
+      responses:
+        '200':
+          description: The demo service returned a successful response.
+        '404':
+          description: Contact not found.
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    Contact:
+      type: object
+      required: [id, name, email]
+      properties:
+        id:
+          type: integer
+          description: Contact identifier.
+        name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        phone:
+          type: string
+          maxLength: 20
+          description: Optional phone number.
+        company:
+          type: string
+          description: Optional company name after client-side mapping.
+    ContactCreateRequest:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        phone:
+          type: string
+          maxLength: 20
+    Error:
+      type: object
+      description: Error response envelope supplied by the external service, when present.
+      additionalProperties: true
+  responses:
+    ClientError:
+      description: A non-retryable client error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: A retryable server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
